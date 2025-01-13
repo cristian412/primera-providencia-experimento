@@ -51,12 +51,15 @@ with col1:
     selected_id = None
     if selected_row is not None and "ID" in selected_row:
         selected_id = selected_row["ID"]
-        
+
 # Columna 2: Visualizador de PDF
 with col2:
     st.subheader("Visualizador de PDF")
-    pdf_ruta = df.loc[selected_id, 'Ruta PDF']
-    st.markdown(mostrar_pdf(pdf_ruta), unsafe_allow_html=True)
+    if selected_id is not None:
+        pdf_ruta = df.loc[df['ID'] == selected_id, 'Ruta PDF'].values[0]
+        st.markdown(mostrar_pdf(pdf_ruta), unsafe_allow_html=True)
+    else:
+        st.write("Seleccioná un documento para ver el PDF.")
 
 # Columna 3: Botón para generar texto
 with col3:
