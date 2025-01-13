@@ -35,7 +35,6 @@ col1, col2, col3 = st.columns([3, 3, 1])
 
 # Columna 1: Tabla
 with col1:
-with col1:
     st.subheader("Tabla de Documentos")
     # Mostrar la tabla como interactiva
     selected_row = st.data_editor(
