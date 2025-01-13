@@ -36,30 +36,18 @@ col1, col2, col3 = st.columns([3, 3, 1])
 # Columna 1: Tabla
 with col1:
     st.subheader("Tabla de Documentos")
-    # Mostrar la tabla como interactiva
-    selected_row = st.data_editor(
-        df,
-        use_container_width=True,
-        column_config={
-            "ID": "ID del Documento",
-            "Nombre": "Nombre del Documento",
-        },
-        height=200,
-        key="documentos_table"
+    selected_index = st.radio(
+        "Selecciona un documento:",
+        options=df.index,
+        format_func=lambda x: f"{df.loc[x, 'Nombre']} (ID: {df.loc[x, 'ID']})",
+        key="radio_selector"
     )
-    # Obtener el ID seleccionado (si hay una fila seleccionada)
-    selected_id = None
-    if selected_row is not None and "ID" in selected_row:
-        selected_id = selected_row["ID"]
 
 # Columna 2: Visualizador de PDF
 with col2:
     st.subheader("Visualizador de PDF")
-    if selected_id is not None:
-        pdf_ruta = df.loc[df['ID'] == selected_id, 'Ruta PDF'].values[0]
-        st.markdown(mostrar_pdf(pdf_ruta), unsafe_allow_html=True)
-    else:
-        st.write("Seleccioná un documento para ver el PDF.")
+    pdf_ruta = df.loc[selected_index, 'Ruta PDF']
+    st.markdown(f'<iframe src="{pdf_ruta}" width="100%" height="600px"></iframe>', unsafe_allow_html=True)
 
 # Columna 3: Botón para generar texto
 with col3:
