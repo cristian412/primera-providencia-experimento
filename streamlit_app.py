@@ -47,7 +47,7 @@ def mostrar_pdf(ruta_pdf):
         with open(ruta_pdf+"-clean.pdf", "rb") as f:
             base64_pdf = base64.b64encode(f.read()).decode('utf-8')
         #https://unionnegocios.com.py/sistema/content/documentos/pdf/grupo1/931745.pdf#toolbar=0&navpanes=0&scrollbar=0
-        pdf_display = f'<iframe src="/static/pdfs/poder_general_union.pdf" width="100%" height="600px"></iframe>'
+        pdf_display = f'<iframe src="static/pdfs/poder_general_union.pdf" width="100%" height="600px"></iframe>'
         return pdf_display
     except FileNotFoundError:
         return "<p style='color: red;'>Archivo PDF no encontrado.</p>"
