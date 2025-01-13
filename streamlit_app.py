@@ -35,13 +35,22 @@ col1, col2, col3 = st.columns([3, 3, 1])
 
 # Columna 1: Tabla
 with col1:
+with col1:
     st.subheader("Tabla de Documentos")
-    selected_index = st.radio(
-        "Selecciona un documento:",
-        options=df.index,
-        format_func=lambda x: f"{df.loc[x, 'Nombre']} (ID: {df.loc[x, 'ID']})",
-        key="radio_selector"
+    # Mostrar la tabla como interactiva
+    selected_row = st.data_editor(
+        df,
+        use_container_width=True,
+        column_config={
+            "ID": "ID del Documento",
+            "Nombre": "Nombre del Documento",
+        },
+        height=200,
+        key="documentos_table"
     )
+    # Obtener el ID seleccionado
+    if selected_row is not None:
+        selected_id = selected_row["ID"]
 
 # Columna 2: Visualizador de PDF
 with col2:
