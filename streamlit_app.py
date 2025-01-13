@@ -54,9 +54,8 @@ with col1:
 # Columna 2: Visualizador de PDF
 with col2:
     st.subheader("Visualizador de PDF")
-    if selected_id is not None:
-        pdf_ruta = df.loc[selected_id, 'Ruta PDF']
-        st.markdown(mostrar_pdf(pdf_ruta), unsafe_allow_html=True)
+    pdf_ruta = df.loc[selected_id, 'Ruta PDF']
+    st.markdown(mostrar_pdf(pdf_ruta), unsafe_allow_html=True)
 
 # Columna 3: Botón para generar texto
 with col3:
