@@ -47,10 +47,11 @@ with col1:
         height=200,
         key="documentos_table"
     )
-    # Obtener el ID seleccionado
-    if selected_row is not None:
+    # Obtener el ID seleccionado (si hay una fila seleccionada)
+    selected_id = None
+    if selected_row is not None and "ID" in selected_row:
         selected_id = selected_row["ID"]
-
+        
 # Columna 2: Visualizador de PDF
 with col2:
     st.subheader("Visualizador de PDF")
