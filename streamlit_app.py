@@ -46,7 +46,7 @@ def mostrar_pdf(ruta_pdf):
     try:
         with open(ruta_pdf+"-clean.pdf", "rb") as f:
             base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-        url_extarnal = https://unionnegocios.com.py/sistema/content/documentos/pdf/grupo1/931745.pdf#toolbar=0&navpanes=0&scrollbar=0
+        url_extarnal = "https://unionnegocios.com.py/sistema/content/documentos/pdf/grupo1/931745.pdf#toolbar=0&navpanes=0&scrollbar=0"
         pdf_display = f'<iframe src="{url_extarnal}" width="100%" height="600px"></iframe>'
         return pdf_display
     except FileNotFoundError:
